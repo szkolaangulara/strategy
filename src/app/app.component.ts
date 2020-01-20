@@ -4,6 +4,7 @@ import { CarType } from './car/car-type.enum';
 import { EngineType } from './car/engine-type.enum';
 import { CarService } from './car/car.service';
 import { AddressService } from './address/address.service';
+import { DiscountService } from './strategy/discount.service';
 
 @Component({
   selector: 'app-root',
@@ -13,11 +14,13 @@ import { AddressService } from './address/address.service';
 export class AppComponent implements OnInit {
   public car: Car;
   public car1: Car;
-  public audiAddress: string;
-  public mercedesAddress: string;
+  public karolDiscount: number;
+  public adamDiscount: number;
+  public wojtekDiscount: number;
 
   constructor(private carService: CarService,
-              private addressService: AddressService) {
+              private addressService: AddressService,
+              private discountService: DiscountService) {
   }
 
   public ngOnInit(): void {
@@ -38,8 +41,24 @@ export class AppComponent implements OnInit {
       this.carService.getDiscountForCar('Klasa E')
     );
 
-    if (this.car.address) {
-      this.audiAddress = `${this.car.address.streetName} ${this.car.address.streetNumber}/${this.car.address.buildingNumber}`;
-    }
+    const karol = {
+      name: 'Karol',
+      businessInMonths: 15
+    };
+
+    const adam = {
+      name: 'Adam',
+      businessInMonths: 60
+    };
+
+    const wojtek = {
+      name: 'Wojtek',
+      isUnder25: false,
+      licenseInMonths: 40
+    };
+
+    this.karolDiscount = this.discountService.getDiscount(karol);
+    this.adamDiscount = this.discountService.getDiscount(adam);
+    this.wojtekDiscount = this.discountService.getDiscount(wojtek);
   }
 }
