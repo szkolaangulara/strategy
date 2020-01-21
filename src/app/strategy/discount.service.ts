@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Client } from './client.interface';
 import { OfferStrategy } from './offer-strategy.interface';
 import { BusinessDependsOnMonthsStrategy } from './business-depends-on-months-strategy';
-import { PrivateDependsOnLicenseMonthsStrategy } from './private-depends-on-license-years-strategy';
+import { PrivateDependsOnLicenseMonthsStrategy } from './private-depends-on-license-months-strategy';
 
 @Injectable(
   {
