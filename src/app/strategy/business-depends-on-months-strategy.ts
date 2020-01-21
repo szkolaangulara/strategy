@@ -7,10 +7,10 @@ export class BusinessDependsOnYearsStrategy implements OfferStrategy {
   }
 
   getDiscount(client: Client): number {
-    const businessInMonths = client.businessInMonths;
-    if (!businessInMonths || businessInMonths < 6) {
+    if (!this.isDiscountAvailable(client)) {
       return 0;
     }
+    const businessInMonths = client.businessInMonths;
     if (businessInMonths >= 6 && businessInMonths < 12) {
       return 4;
     }

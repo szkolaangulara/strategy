@@ -15,8 +15,10 @@ export class AppComponent implements OnInit {
   public car: Car;
   public car1: Car;
   public karolDiscount: number;
-  public adamDiscount: number;
+  public jacekDiscount: number;
   public wojtekDiscount: number;
+  public dawidDiscount: number;
+  public anrzejDiscount: number;
 
   constructor(private carService: CarService,
               private addressService: AddressService,
@@ -46,8 +48,8 @@ export class AppComponent implements OnInit {
       businessInMonths: 15
     };
 
-    const adam = {
-      name: 'Adam',
+    const jacek = {
+      name: 'Jacek',
       businessInMonths: 60
     };
 
@@ -57,8 +59,22 @@ export class AppComponent implements OnInit {
       licenseInMonths: 40
     };
 
+    const dawid = {
+      name: 'Dawid',
+      isUnder25: false,
+      licenseInMonths: 35
+    };
+
+    const andrzej = {
+      name: 'Andrzej',
+      isUnder25: false,
+      businessInMonths: 4,
+    };
+
     this.karolDiscount = this.discountService.getDiscount(karol);
-    this.adamDiscount = this.discountService.getDiscount(adam);
+    this.jacekDiscount = this.discountService.getDiscount(jacek);
     this.wojtekDiscount = this.discountService.getDiscount(wojtek);
+    this.dawidDiscount = this.discountService.getDiscount(dawid);
+    this.anrzejDiscount = this.discountService.getDiscount(andrzej);
   }
 }

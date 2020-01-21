@@ -11,11 +11,10 @@ import { PrivateDependsOnLicenseYearsStrategy } from './private-depends-on-licen
 )
 export class DiscountService {
   public getDiscount(client: Client): number {
-    const strategy = this.prepareStrategy(client);
-    return strategy.getDiscount(client);
+    return this.resolveStrategy(client).getDiscount(client);
   }
 
-  private prepareStrategy(client: Client): OfferStrategy {
+  private resolveStrategy(client: Client): OfferStrategy {
     if (client.businessInMonths) {
       return new BusinessDependsOnYearsStrategy();
     }
