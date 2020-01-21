@@ -1,7 +1,7 @@
 import { OfferStrategy } from './offer-strategy.interface';
 import { Client } from './client.interface';
 
-export class BusinessDependsOnYearsStrategy implements OfferStrategy {
+export class BusinessDependsOnMonthsStrategy implements OfferStrategy {
   isDiscountAvailable(client: Client): boolean {
     return client.businessInMonths > 6;
   }

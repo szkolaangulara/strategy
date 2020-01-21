@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Client } from './client.interface';
 import { OfferStrategy } from './offer-strategy.interface';
-import { BusinessDependsOnYearsStrategy } from './business-depends-on-months-strategy';
-import { PrivateDependsOnLicenseYearsStrategy } from './private-depends-on-license-years-strategy';
+import { BusinessDependsOnMonthsStrategy } from './business-depends-on-months-strategy';
+import { PrivateDependsOnLicenseMonthsStrategy } from './private-depends-on-license-years-strategy';
 
 @Injectable(
   {
@@ -16,8 +16,8 @@ export class DiscountService {
 
   private resolveStrategy(client: Client): OfferStrategy {
     if (client.businessInMonths) {
-      return new BusinessDependsOnYearsStrategy();
+      return new BusinessDependsOnMonthsStrategy();
     }
-    return new PrivateDependsOnLicenseYearsStrategy();
+    return new PrivateDependsOnLicenseMonthsStrategy();
   }
 }

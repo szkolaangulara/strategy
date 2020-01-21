@@ -1,7 +1,7 @@
 import { OfferStrategy } from './offer-strategy.interface';
 import { Client } from './client.interface';
 
-export class PrivateDependsOnLicenseYearsStrategy implements OfferStrategy {
+export class PrivateDependsOnLicenseMonthsStrategy implements OfferStrategy {
 
   isDiscountAvailable(client: Client): boolean {
     return !client.isUnder25 && client.licenseInMonths > 24;
